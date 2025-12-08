@@ -7,7 +7,7 @@ public class Game {
     private Board board;
     private Joueur joueurBlanc;
     private Joueur joueurNoir;
-    private Joueur joueurActuel;
+    private Joueur currentPlayer;
 
     public Game() {
         board = new Board();
