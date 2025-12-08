@@ -12,7 +12,10 @@ public class Game {
 
     public Game() {
         board = new Board();
-        joueurActuel = joueurBlanc;
+        joueurBlanc = new Joueur("Blanc", Piece.Color.WHITE);
+        joueurNoir = new Joueur("Noir", Piece.Color.BLACK);
+
+        joueurActuel = joueurBlanc;   // le joueur qui commence
 
     }
 
@@ -22,7 +25,7 @@ public class Game {
 
         while (true) {
             Utils.printBoard(board);
-            System.out.println("Tour : " + joueurActuel );
+            System.out.println("Tour : " + joueurActuel.getNom() + " (" + joueurActuel.getCouleur() + ")");
 
             System.out.print("Coup (ex: 2,3 -> 3,4), save, load, quit : ");
             String input = sc.nextLine();
@@ -57,6 +60,6 @@ public class Game {
 
     private void changePlayer() {
     joueurActuel = (joueurActuel == joueurBlanc) ? joueurNoir : joueurBlanc;
-                
     }
+
 }
