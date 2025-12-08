@@ -30,4 +30,6 @@ public class BoardTest {
         assertTrue(ok);
         assertNull(b.getPiece(new Position(5,2)));
     }
+    
+    
 }
