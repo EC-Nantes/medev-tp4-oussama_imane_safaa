@@ -1,5 +1,6 @@
 package checkers;
 
+
 public class Position {
     public int row;
     public int col;
