@@ -7,11 +7,13 @@ public class Game {
     private Board board;
     private Joueur joueurBlanc;
     private Joueur joueurNoir;
-    private Joueur currentPlayer;
+    private Joueur joueurActuel;
+
 
     public Game() {
         board = new Board();
-        currentPlayer = Piece.Color.WHITE;
+        joueurActuel = joueurBlanc;
+
     }
 
     public void start() {
@@ -20,7 +22,7 @@ public class Game {
 
         while (true) {
             Utils.printBoard(board);
-            System.out.println("Tour : " + currentPlayer);
+            System.out.println("Tour : " + joueurActuel );
 
             System.out.print("Coup (ex: 2,3 -> 3,4), save, load, quit : ");
             String input = sc.nextLine();
@@ -29,19 +31,19 @@ public class Game {
                 case "quit":
                     return;
                 case "save":
-                    SaveManager.save(board, currentPlayer);
+                    SaveManager.save(board, joueurActuel.getCouleur());
                     System.out.println("Partie sauvegardée.");
                     break;
                 case "load":
                     SaveManager.LoadResult res = SaveManager.load();
                     board = res.board;
-                    currentPlayer = res.player;
+                    joueurActuel = (res.player == Piece.Color.WHITE) ? joueurBlanc : joueurNoir;
                     System.out.println("Partie chargée.");
                     break;
                 default:
                     try {
                         Move move = Utils.parseMove(input);
-                        if (board.applyMove(move, currentPlayer)) {
+                        if (board.applyMove(move, joueurActuel.getCouleur())) {
                             changePlayer();
                         } else {
                             System.out.println("Coup invalide !");
@@ -54,8 +56,7 @@ public class Game {
     }
 
     private void changePlayer() {
-        currentPlayer = (currentPlayer == Piece.Color.WHITE)
-                ? Piece.Color.BLACK
-                : Piece.Color.WHITE;
+    joueurActuel = (joueurActuel == joueurBlanc) ? joueurNoir : joueurBlanc;
+                
     }
 }
