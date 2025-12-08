@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Game {
 
     private Board board;
-    private Piece.Color currentPlayer;
+    private Joueur joueurBlanc;
+    private Joueur joueurNoir;
+    private Joueur joueurActuel;
 
     public Game() {
         board = new Board();
