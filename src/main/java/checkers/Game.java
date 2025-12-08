@@ -7,13 +7,12 @@ public class Game {
     private Board board;
     private Joueur joueurBlanc;
     private Joueur joueurNoir;
-    private Joueur currentPlayer;
+    private Joueur joueurActuel;
+
 
     public Game() {
         board = new Board();
         joueurActuel = joueurBlanc;
-        joueurBlanc = new Joueur("Blanc", Piece.Color.WHITE);
-        joueurNoir = new Joueur("Noir", Piece.Color.BLACK);
 
     }
 
@@ -23,7 +22,7 @@ public class Game {
 
         while (true) {
             Utils.printBoard(board);
-            System.out.println("Tour : " + joueurActuel);
+            System.out.println("Tour : " + joueurActuel );
 
             System.out.print("Coup (ex: 2,3 -> 3,4), save, load, quit : ");
             String input = sc.nextLine();
@@ -32,13 +31,13 @@ public class Game {
                 case "quit":
                     return;
                 case "save":
-                    SaveManager.save(board, joueurActuel);
+                    SaveManager.save(board, joueurActuel.getCouleur());
                     System.out.println("Partie sauvegardée.");
                     break;
                 case "load":
                     SaveManager.LoadResult res = SaveManager.load();
                     board = res.board;
-                    joueurActuel = res.player;
+                    joueurActuel = (res.player == Piece.Color.WHITE) ? joueurBlanc : joueurNoir;
                     System.out.println("Partie chargée.");
                     break;
                 default:
@@ -57,7 +56,7 @@ public class Game {
     }
 
     private void changePlayer() {
-            joueurActuel = (joueurActuel == joueurBlanc) ? joueurNoir : joueurBlanc;
-
+    joueurActuel = (joueurActuel == joueurBlanc) ? joueurNoir : joueurBlanc;
+                
     }
 }
