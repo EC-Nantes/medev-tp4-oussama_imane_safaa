@@ -1,0 +1,11 @@
+. BP . BP . BP . BP . BP 
+BP . BP . BP . BP . BP . 
+. BP . BP . BP . BP . BP 
+BP . BP . BP . BP . BP . 
+. . . . . . . . . . 
+. . . . . . . . . . 
+. WP . WP . WP . WP . WP 
+WP . WP . WP . WP . WP . 
+. WP . WP . WP . WP . WP 
+WP . WP . WP . WP . WP . 
+PLAYER=WHITE
