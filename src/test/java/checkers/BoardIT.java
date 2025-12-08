@@ -1,34 +1,61 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
+ */
 package checkers;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class BoardIT {
 
+    /**
+     * Test of getPiece method, of class Board.
+     */
     @Test
-    public void testSimpleMove() {
-        Board b = new Board();
-
-        Move m = new Move(new Position(6,1), new Position(5,2));
-        boolean ok = b.applyMove(m, Piece.Color.WHITE);
-
-        assertTrue(ok);
-        assertNull(b.getPiece(new Position(6,1)));
-        assertNotNull(b.getPiece(new Position(5,2)));
+    public void testGetPiece() {
+        System.out.println("getPiece");
+        Position p = null;
+        Board instance = new Board();
+        Piece expResult = null;
+        Piece result = instance.getPiece(p);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
 
+    /**
+     * Test of setPiece method, of class Board.
+     */
     @Test
-    public void testCapture() {
-        Board b = new Board();
+    public void testSetPiece() {
+        System.out.println("setPiece");
+        Position p = null;
+        Piece piece = null;
+        Board instance = new Board();
+        instance.setPiece(p, piece);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
 
-        // placement manuel
-        b.setPiece(new Position(5,2), new Piece(Piece.Color.BLACK));
-
-        Move m = new Move(new Position(6,1), new Position(4,3));
-        boolean ok = b.applyMove(m, Piece.Color.WHITE);
-
-        assertTrue(ok);
-        assertNull(b.getPiece(new Position(5,2)));
+    /**
+     * Test of applyMove method, of class Board.
+     */
+    @Test
+    public void testApplyMove() {
+        System.out.println("applyMove");
+        Move m = null;
+        Piece.Color player = null;
+        Board instance = new Board();
+        boolean expResult = false;
+        boolean result = instance.applyMove(m, player);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
     
